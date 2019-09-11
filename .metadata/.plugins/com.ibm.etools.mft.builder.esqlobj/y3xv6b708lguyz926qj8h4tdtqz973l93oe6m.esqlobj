@@ -1,0 +1,19 @@
+CREATE FILTER MODULE Request_Loan_Filter
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.CreditScoreAmount = Root.SOAP.Body.ns:CreditScoreResponse.Score ;
+		IF CAST(Environment.AMOUNT AS INTEGER) > CAST(Root.SOAP.Body.ns:CreditScoreResponse.Score AS INTEGER)  THEN
+			
+			RETURN FALSE ;
+			
+		ELSE
+		
+		RETURN TRUE;	
+		
+		END IF;
+		
+		
+		
+	END;
+
+END MODULE;

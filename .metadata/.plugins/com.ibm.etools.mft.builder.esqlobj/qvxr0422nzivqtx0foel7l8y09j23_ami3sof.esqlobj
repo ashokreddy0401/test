@@ -1,0 +1,48 @@
+CREATE PROCEDURE setCommonEnvironmentVariables(INOUT EV REFERENCE,IN Root REFERENCE, IN LEV REFERENCE)
+/*
+Initialize the Application variables(these variables are common for every interface in the same application)
+*/
+BEGIN
+	CREATE FIELD EV.Application;
+	CREATE FIELD EV.FlowSpecificInfo;
+	
+	DECLARE APP REFERENCE TO EV.Application;
+	DECLARE IFS REFERENCE TO EV.FlowSpecificInfo;
+	DECLARE MQMD REFERENCE TO Root.MQMD;
+	DECLARE HTTP REFERENCE TO Root.HTTPInputHeader;
+
+	DECLARE IdAsChar CHAR;
+	DECLARE x INTEGER 0;		
+
+	SET EV.BeginTimestamp = CURRENT_TIMESTAMP;
+	SET EV.MaxCustomAttributes = 25;				
+	
+	SET APP.applicationName = 'Recon';
+	SET APP.flowName = MessageFlowLabel;
+	SET APP.exception = FALSE;
+	SET APP.dummyMessage = 'DummyMessage';
+	SET APP.skipReplyToQ = FALSE; -- variable to identify if ReplyToQ & ReplyToQMgr check needs to be avoided
+	SET APP.NullCorrelId ='000000000000000000000000000000000000000000000000' ;
+	SET APP.requestIndicator = '.REQUEST';
+	SET APP.responseIndicator = '.REPLY';
+	SET APP.datagramIndicator = '.DATAGRAM';
+	SET APP.inquireIndicator = '.INQUIRE';
+	SET APP.defaultWireFormat = 'CWF';
+	SET APP.NullIndicator = CAST(X'00' AS CHAR CCSID Root.Properties.CodedCharSetId);
+	SET APP.MessageRetrievedGMTTime = CURRENT_GMTTIME; -- represents the GMT Time at which the message is picked up from queue for processing
+	SET APP.setExpiryTime=864000; -- 24 hrs expiration time		
+
+	/*
+	determine the input transport type - MQ /HTTP /FILE
+	*/
+	IF FIELDNAME(Root.MQMD) <> '' THEN
+		SET APP.logInTransport = 'MQ';
+		SET APP.logOutTransport = 'MQ';
+	ELSEIF FIELDNAME(Root.HTTPInputHeader) <> '' THEN
+		SET APP.logInTransport = 'HTTP';
+		SET APP.logOutTransport = 'HTTP';
+	ELSE
+		SET APP.logInTransport = 'FILE';
+		SET APP.logOutTransport = 'FILE';
+	END IF;		
+END;

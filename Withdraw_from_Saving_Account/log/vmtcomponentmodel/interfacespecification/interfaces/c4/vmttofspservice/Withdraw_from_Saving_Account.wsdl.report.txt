@@ -1,0 +1,24 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Withdraw_from_Saving_Account\Withdraw_from_Saving_Account.wsdl
+
+The WSDL import will proceed with bindings Withdraw_from_Saving_AccountSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Withdraw_from_Saving_Account/Withdraw_from_Saving_Account.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService}Withdraw_from_Saving_AccountSOAP.
+Parsing wsdl binding input VMTInitiatedSavingsWithdrawal.
+Parsing wsdl binding output VMTInitiatedSavingsWithdrawal.
+Processing doc style for operation VMTInitiatedSavingsWithdrawal.
+Populating WSDL schema Withdraw_from_Saving_Account.xsd.
+Creating file Withdraw_from_Saving_Account.xsd in the workspace.
+Creating file Withdraw_from_Saving_Account_InlineSchema1.xsd in the workspace.
+Creating file /Withdraw_from_Saving_Account/Withdraw_from_Saving_Account/Withdraw_from_Saving_Account_InlineSchema2.xsd in the workspace.
+Creating file /Withdraw_from_Saving_Account/Withdraw_from_Saving_Account/Withdraw_from_Saving_Account_InlineSchema3.xsd in the workspace.
+Copying source WSDL Withdraw_from_Saving_Account.wsdl to Withdraw_from_Saving_Account.wsdl.
+
+Elapsed time processing this message definition file: 0.219 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

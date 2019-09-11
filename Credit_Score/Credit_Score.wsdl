@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Credit_Score" targetNamespace="http://Credit_Score/Credit_Score/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://Credit_Score/Credit_Score/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="Credit_Score_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="Credit_ScoreSOAP" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema targetNamespace="http://Credit_Score/Credit_Score/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="Credit_Score_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="CreditScoreRequest">
+    <wsdl:part element="tns:CreditScore" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CreditScoreResponse">
+    <wsdl:part element="tns:CreditScoreResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Credit_Score">
+    <wsdl:operation name="CreditScore">
+      <wsdl:input message="tns:CreditScoreRequest"/>
+      <wsdl:output message="tns:CreditScoreResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Credit_ScoreSOAP" type="tns:Credit_Score">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreditScore">
+      <soap:operation soapAction="http://Credit_Score/Credit_Score/CreditScore"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Credit_Score">
+    <wsdl:port binding="tns:Credit_ScoreSOAP" name="Credit_ScoreSOAP">
+      <soap:address location="http://127.0.0.1:7801/creditscore"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

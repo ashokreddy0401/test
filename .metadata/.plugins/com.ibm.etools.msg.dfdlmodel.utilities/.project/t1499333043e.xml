@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><MessageBroker name="Message_Model_Lib">
+  <XSDCollection href="platform:/resource/Message_Model_Lib/Request_OFS.xsd" prefix="" targetNamespace="">
+    <import name="IBMdefined/CommaSeparatedFormat.xsd" targetNamespace="http://www.ibm.com/dfdl/CommaSeparatedFormat"/>
+    <element href="platform:/resource/Message_Model_Lib/Request_OFS.xsd#//Request_OFS;XSDElementDeclaration" name="Request_OFS"/>
+    <complexType baseType="mlib://Message_Model_Lib#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Message_Model_Lib/Request_OFS.xsd#//UserInformation;XSDComplexTypeDefinition" name="UserInformation"/>
+    <complexType baseType="mlib://Message_Model_Lib#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Message_Model_Lib/Request_OFS.xsd#//Options;XSDComplexTypeDefinition=1" name="Options"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Message_Model_Lib/OFS_ENQ_Response.xsd" prefix="" targetNamespace="">
+    <import name="IBMdefined/RecordSeparatedFieldFormat.xsd" targetNamespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat"/>
+    <element href="platform:/resource/Message_Model_Lib/OFS_ENQ_Response.xsd#//OFS_ENQ_Response;XSDElementDeclaration" name="OFS_ENQ_Response"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Message_Model_Lib/OFS_Response.xsd" prefix="" targetNamespace="">
+    <import name="IBMdefined/CommaSeparatedFormat.xsd" targetNamespace="http://www.ibm.com/dfdl/CommaSeparatedFormat"/>
+    <element href="platform:/resource/Message_Model_Lib/OFS_Response.xsd#//OFS_Response;XSDElementDeclaration" name="OFS_Response"/>
+    <complexType baseType="mlib://Message_Model_Lib#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Message_Model_Lib/OFS_Response.xsd#//Header;XSDComplexTypeDefinition" name="Header"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Message_Model_Lib/Request_OFS_ENQ.xsd" prefix="" targetNamespace="">
+    <import name="IBMdefined/CommaSeparatedFormat.xsd" targetNamespace="http://www.ibm.com/dfdl/CommaSeparatedFormat"/>
+    <element href="platform:/resource/Message_Model_Lib/Request_OFS_ENQ.xsd#//Request_OFS_ENQ;XSDElementDeclaration" name="Request_OFS_ENQ"/>
+    <complexType baseType="mlib://Message_Model_Lib#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Message_Model_Lib/Request_OFS_ENQ.xsd#//ENQ_UserInformation;XSDComplexTypeDefinition" name="ENQ_UserInformation"/>
+    <complexType baseType="mlib://Message_Model_Lib#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Message_Model_Lib/Request_OFS_ENQ.xsd#//ENQ_Options;XSDComplexTypeDefinition=1" name="ENQ_Options"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Message_Model_Lib/IBMdefined/RecordSeparatedFieldFormat.xsd" prefix="tns" targetNamespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat"/>
+  <XSDCollection href="platform:/resource/Message_Model_Lib/IBMdefined/CommaSeparatedFormat.xsd" prefix="tns" targetNamespace="http://www.ibm.com/dfdl/CommaSeparatedFormat"/>
+  <XSDCollection href="platform:/resource/Message_Model_Lib/Batch_OFS_Request.xsd" prefix="" targetNamespace="">
+    <element href="platform:/resource/Message_Model_Lib/Batch_OFS_Request.xsd#//requests;XSDElementDeclaration" name="requests" type="mlib://Message_Model_Lib#/-/complexType{}requests"/>
+    <complexType baseType="mlib://Message_Model_Lib#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Message_Model_Lib/Batch_OFS_Request.xsd#//requests;XSDComplexTypeDefinition" name="requests"/>
+  </XSDCollection>
+</MessageBroker>

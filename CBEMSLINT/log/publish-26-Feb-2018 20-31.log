@@ -1,0 +1,8 @@
+Publish: /home/admin/IBM/IIBT10/cbemsl-2018/CBEMSLINT
+**********************************************
+Event Name: Customer.event
+Contract Name: CUSTOMER,OPEN.MSL
+Flow Name: CBEMSLINT-Customer
+Status : FAILURE 
+Reason : Error building schema for integration flow CBEMSLINT-Customer. 
+**********************************************

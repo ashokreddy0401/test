@@ -1,0 +1,118 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		
+	SET OutputRoot.Properties.MessageSet = '{Message_Model_Lib}' ;
+	
+	CREATE LASTCHILD OF OutputRoot DOMAIN 'DFDL';
+	
+	-- SET OutputRoot.DFDL.Request_OFS.record.ApplicationName = InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FSIIdentityId ;		
+	
+	-- TRANSACTION 
+	
+	-- The OFS Message Header
+		
+		DECLARE PhoneNumberLength INTEGER;
+		SET PhoneNumberLength = LENGTH(InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FSIIdentityId.vmt1:VmtReferenceNumber) ;
+
+		SET OutputRoot.DFDL.Request_OFS.record.ApplicationName = 'CUSTOMER' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Version_Name = 'OPEN.MSL' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Function = 'I' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Process_Type = 'PROCESS' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.GTS_Control_Value = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.No_Of_Authrisers = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.SignOnName = 'CBEMSL01' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.Password = '123123' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.Company_Code = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.TransactionId = SUBSTRING(InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FSIIdentityId.vmt1:VmtReferenceNumber FROM PhoneNumberLength-8) ;
+		-- SET OutputRoot.DFDL.Request_OFS.record.TransactionId = '250909123456';
+		-- The OFS Message Body
+		--Generate The Name
+		DECLARE whiteSpace CONSTANT CHARACTER CAST( X'090D0A20' AS CHAR CCSID 1208);
+		DECLARE CustFirstName CHAR ;
+		SET CustFirstName = TRIM(whiteSpace FROM InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FirstName) ;
+		DECLARE CustMiddleName CHAR ;
+		SET CustMiddleName = TRIM(whiteSpace FROM InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:MiddleName);
+		DECLARE CustLastName CHAR ;
+		SET CustLastName = TRIM(whiteSpace FROM InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:LastName);
+		DECLARE CustName CHAR ;
+		DECLARE MiddleNameLength INTEGER;
+		SET MiddleNameLength = LENGTH(CustMiddleName);
+		
+		CASE 
+		WHEN MiddleNameLength > 0 THEN
+			SET CustName = CustFirstName||' '||CustMiddleName||' '||CustLastName ;
+		ELSE
+			SET CustName = CustFirstName||' '||CustLastName ;
+		END CASE;
+		
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[1] = 'NAME.1:1:='||CustName ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[2] = 'SHORT.NAME:1:1='||CustName ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[3] = 'MNEMONIC:1:1='||SUBSTRING(CustName FROM 1 FOR 1)||SUBSTRING(InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FSIIdentityId.vmt1:VmtReferenceNumber FROM PhoneNumberLength-8) ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[4] = 'DATE.OF.BIRTH:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:DateOfBirth ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[5] = 'LEGAL.DOC.NAME:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:IdType ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[6] = 'LEGAL.ID:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:IdReference ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[7] = 'LEGAL.ISS.DATE:1:1='||'20010101' ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[8] = 'SMS.1:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FSIIdentityId.vmt1:MSISDN ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[9] = 'ADDRESS:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:Address1 ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[10] = 'ADDRESS:2:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:Address2 ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[11] = 'ADDRESS:3:1=P.O BOX '||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:POBox ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[12] = 'TOWN.COUNTRY:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:CityTown ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[13] = 'POST.CODE:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:PostalCode ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[14] = 'MSL.SUBSC.ID:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FSIIdentityId.vmt1:VmtReferenceNumber ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[15] = 'MSL.MSG.ID:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:MessageId.vmt1:Id ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[16] = 'MSL.RCPT.NO:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:TransactionReceiptNumber ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[17] = 'MSL.SIMTRANS.ID:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:SimAppTransId ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[18] = 'MSL.CUST.TIER:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:CustomerTier ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[19] = 'MSL.TXN.ID:1:1='||InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:TransactionId ;
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[20] = 'MSL.TIMESTAMP:1:1='||CAST(InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:MessageId.vmt1:TimeStamp  AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss');
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[21] = ' ';
+	
+	
+	-- ENQUIRY
+	
+	-- ENQUIRY HEADER
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ApplicationName = 'ENQUIRY.SELECT' ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ENQ_UserInformation.SignOnName = 'CBEMSL01' ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ENQ_UserInformation.Password = '123456' ;
+		
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.TransactionId = 'MSL.CUSTOMER.ACCOUNT' ;
+		
+		-- The OFS Message Body
+		
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.MessageData[1] = '@ID:EQ='||SUBSTRING(InputRoot.SOAP.Body.vmt:ActivateAccount.vmt:request.c4:FSIIdentityId.vmt1:VmtReferenceNumber FROM PhoneNumberLength-8) ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.MessageData[2] = ' ';
+		
+		
+		-- COMBINE THE TWO REQUESTS
+		
+		CREATE LASTCHILD OF Environment.Variables.Transaction DOMAIN 'DFDL';
+		CREATE LASTCHILD OF Environment.Variables.Enquiry DOMAIN 'DFDL';
+		SET Environment.Variables.Transaction.DFDL.Request_OFS = OutputRoot.DFDL.Request_OFS ;
+		SET Environment.Variables.Enquiry.DFDL.Request_OFS_ENQ = OutputRoot.DFDL.Request_OFS_ENQ ;
+		DECLARE options INTEGER BITOR(RootBitStream, ValidateNone, ValidateNone);
+		SET Environment.Data.Transaction = CAST(ASBITSTREAM(Environment.Variables.Transaction.DFDL.Request_OFS,547,1208,'{Message_Model_Lib}','{}:Request_OFS',,options) AS CHARACTER CCSID 1208) ;
+		SET Environment.Data.Enquiry = CAST(ASBITSTREAM(Environment.Variables.Enquiry.DFDL.Request_OFS_ENQ,547,1208,'{Message_Model_Lib}','{}:Request_OFS_ENQ',,options) AS CHARACTER CCSID 1208) ;
+		
+		CREATE LASTCHILD OF OutputRoot DOMAIN 'XMLNSC';
+  		SET OutputRoot.XMLNSC.requests.request[1]  = Environment.Data.Transaction ;
+  		SET OutputRoot.XMLNSC.requests.request[2]  = Environment.Data.Enquiry ;
+  		
+  		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pluginspace>
+<plugin id="Log4jLoggingPlugin" version="1.1.0"/>
+<plugin id="MQTTNodes" version="10.0.0.15"/>
+<plugin id="T24CustomNode" version="1.0.0.v201701181013"/>
+<plugin id="com.ibm.etools.mft.connector.loopback" version="10.0.0.15"/>
+<plugin id="com.ibm.etools.mft.connector.salesforce" version="10.0.0.15"/>
+<plugin id="com.ibm.etools.mft.mapping.codegen.esql" version="10.0.0.15"/>
+</pluginspace>

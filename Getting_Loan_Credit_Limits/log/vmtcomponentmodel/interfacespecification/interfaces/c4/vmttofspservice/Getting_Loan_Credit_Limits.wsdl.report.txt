@@ -1,0 +1,27 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Getting_Loan_Credit_Limits\Getting_Loan_Credit_Limits.wsdl
+
+
+The following is a list of WS-I warning messages found when importing:
+XSD: The location 'Getting_Loan_Credit_Limits_InlineSchema3.xsd' has not been resolved because the import is unused, Line: 18, Column: 1
+XSD: The location 'Getting_Loan_Credit_Limits_InlineSchema2.xsd' has not been resolved because the import is unused, Line: 26, Column: 1
+
+
+The WSDL import will proceed with bindings Getting_Loan_Credit_LimitsSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Getting_Loan_Credit_Limits/Getting_Loan_Credit_Limits.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService}Getting_Loan_Credit_LimitsSOAP.
+Parsing wsdl binding input GetLoanCreditLimit.
+Parsing wsdl binding output GetLoanCreditLimit.
+Processing doc style for operation GetLoanCreditLimit.
+Populating WSDL schema Getting_Loan_Credit_Limits.xsd.
+Creating file Getting_Loan_Credit_Limits.xsd in the workspace.
+Copying source WSDL Getting_Loan_Credit_Limits.wsdl to Getting_Loan_Credit_Limits.wsdl.
+
+Elapsed time processing this message definition file: 0.242 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat">
+    <xsd:import namespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" schemaLocation="IBMdefined/RecordSeparatedFieldFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format encoding="{$dfdl:encoding}" escapeSchemeRef="" occursCountKind="implicit" ref="recSepFieldsFmt:RecordSeparatedFieldsFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="OFS_ENQ_Response">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator=",">
+                                							                                                    <xsd:element name="Header">
+          <xsd:complexType>
+            <xsd:sequence dfdl:separator="/" dfdl:terminator="">
+              <xsd:element maxOccurs="unbounded" minOccurs="0" name="Header" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="FieldNames">
+          <xsd:complexType>
+            <xsd:sequence dfdl:separator="/" dfdl:terminator="">
+              <xsd:element maxOccurs="unbounded" minOccurs="0" name="FieldName" type="xsd:string"/>
+                                                                </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                                                                                                <xsd:element name="FieldValues">
+          <xsd:complexType>
+            <xsd:sequence dfdl:separator="%HT;">
+              <xsd:element maxOccurs="unbounded" name="FieldValue" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                            <xsd:element minOccurs="0" name="Footer" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="FileName" type="xsd:string"/>
+            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+    </xsd:schema>

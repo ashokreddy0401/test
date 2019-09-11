@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Messages/C4/" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/Messages/C4/" xmlns:ic4="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/IC4FSP2VMT" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      
+      <xsd:complexType name="request">     
+        <xsd:sequence>
+           <xsd:element minOccurs="0" name="AdditionalInformation" nillable="true" type="xsd:string"/>
+        	<xsd:element minOccurs="1" name="BankResponseCode" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="BankShortCode" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="FSIIdentityId" nillable="true" type="c4:FSIIdentityId"/>
+            <xsd:element minOccurs="1" name="MessageId" nillable="true" type="c4:MessageId"/>
+			<xsd:element minOccurs="1" name="TransactionId" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="TransactionReceiptNumber" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="TransactionTypeName" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="AccountCreationTimeStamp" nillable="true" type="xsd:dateTime"/>
+		    <xsd:element minOccurs="1" name="BankResponseCode" nillable="true" type="xsd:string"/>
+			<xsd:element minOccurs="1" name="FSILinkType" nillable="true" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="FIAccountNumber" nillable="true" type="xsd:string"/>
+			<xsd:element minOccurs="1" name="SimAppTransId" nillable="true" type="xsd:long"/>
+          
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FSIIdentityId">
+        <xsd:sequence>
+          
+         <xsd:element minOccurs="0" name="MSISDN" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="1" name="VmtReferenceNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="GroupID" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ShortCode" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="MessageId">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="Id" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="1" name="TimeStamp" nillable="true" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      
+       <xsd:complexType name="FSPInitiatedActivateNotificationResult">     
+        <xsd:sequence>
+        	<xsd:element minOccurs="0" name="AdditionalInformation" nillable="true" type="xsd:string"/>
+        	<xsd:element minOccurs="1" name="BankResponseCode" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="BankShortCode" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="FSIIdentityId" nillable="true" type="c4:FSIIdentityId"/>
+            <xsd:element minOccurs="1" name="MessageId" nillable="true" type="c4:MessageId"/>
+            <xsd:element minOccurs="1" name="TimeStamp" nillable="true" type="xsd:dateTime"/>
+			<xsd:element minOccurs="1" name="TransactionId" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="TransactionReceiptNumber" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="1" name="TransactionTypeName" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Result" nillable="true" type="xsd:string"/>
+
+        </xsd:sequence>
+      </xsd:complexType>
+      
+    </xsd:schema>

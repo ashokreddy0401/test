@@ -1,0 +1,86 @@
+CREATE FILTER MODULE CommonParseException_parseException
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF FIELDNAME(Environment.Variables) IS NULL THEN
+			 CREATE FIELD Environment.Variables;
+			 DECLARE EV     REFERENCE TO Environment.Variables;
+		   	 DECLARE MQMD   REFERENCE TO Root.MQMD;
+		   	 DECLARE LEV 	REFERENCE TO LocalEnvironment;
+				--initialize the common environment variables for all the applications
+			 CALL common.setCommonEnvironmentVariables(EV, Root, LEV);
+		END IF;
+
+		DECLARE EV     REFERENCE TO Environment.Variables;
+		DECLARE APP	   REFERENCE TO EV.Application;
+				
+		IF EV.ErrorMsg IS NULL THEN
+			CREATE LASTCHILD OF EV Domain('XML') TYPE Name NAME 'ErrorMsg';
+		END IF; 
+		DECLARE OXE REFERENCE TO EV.ErrorMsg;
+		
+		-- Source of the message, which caused the error.
+		SET OXE.Error.TimeStamp = SUBSTRING(CAST(CURRENT_TIMESTAMP AS CHAR) FROM 12 FOR 26);
+				
+		-- Point to the First Child in the ExceptionList Root.
+		DECLARE Location character;
+		DECLARE Diagnostics character;
+		DECLARE DiagnosticsInfo character;
+		DECLARE ErrorFunction character;
+		DECLARE Width Integer;
+		SET Width = 1; 
+		DECLARE Path REFERENCE TO ExceptionList.*[Width]; 
+		-- Check whether the Width of the Exception Tree is more and Proceed.
+		While LastMove(Path) do
+			SET Diagnostics = '';
+			SET DiagnosticsInfo = '';
+			SET ErrorFunction = '';
+			While (Path.Number is not null)
+				do				
+				IF Length(Path.Label) > 0 THEN
+					SET Location = Path.Label;
+				End if;
+				IF Length(Path.Text) > 0 THEN
+					SET Diagnostics = Diagnostics || Path.Text || '. ';
+				End if;
+				IF Length(Path.Function) > 0 THEN
+					SET ErrorFunction = ErrorFunction || Path.Function || '. ';
+				End if;
+				
+				MOVE Path Lastchild;
+			End while;
+			
+			-- Construct the Specific Diagnostic Message.
+			MOVE Path Parent;
+			-- Determine the source of message which caused the error.
+			SET OXE.Error.Detail[Width].ExceptionType = FieldName(Path);
+			SET OXE.Error.Detail[Width].ErrorNumber = Path.Number;
+			SET OXE.Error.Detail[Width].SeverityLevel = Path.Severity;			
+			SET OXE.Error.Detail[Width].ErrorFunction = ErrorFunction;
+			SET OXE.Error.Detail[Width].ErrorSource = Location;
+			SET OXE.Error.Detail[Width].DiagnosticMessage= Diagnostics;
+			
+			-- while loop to traverse all the inserts and construct the
+			-- additional diagnostic message
+			MOVE Path FirstChild NAME 'Insert';
+			IF FieldName(Path)='Insert' THEN
+				While LastMove(Path) do
+					IF Length(Path.Text) > 0 THEN
+						SET DiagnosticsInfo = DiagnosticsInfo || Path.Text || '. ';
+					End if;
+					MOVE Path NextSibling NAME 'Insert';
+				End while;
+			END IF;
+			SET OXE.Error.Detail[Width].CauseOfError = DiagnosticsInfo;
+			
+			SET Width = Width +1;
+			MOVE Path TO ExceptionList.*[Width];
+		END WHILE;
+		
+		/*
+			set the ExceptionList as it is to the Error Msg
+		*/
+		SET OXE.Error.ExceptionList = ExceptionList;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

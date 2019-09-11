@@ -1,0 +1,14 @@
+<ApplicationSpecificSchemaProperties
+  description="T24EMD ASI schema"
+  displayName="T24EMD ASI schema"
+  namespaceURI="http://www.yourcompany.com/xmlns/prod/websphere/j2ca/t24emd/metadata"
+  xsdFileURL="file:/C:/Users/Ashok/IBM/IIBT10/TestGit/T24IIBConnector/connectorModule/T24EMDASI.xsd"
+  linkage="1"
+/>
+<ApplicationSpecificSchemaProperties
+  description="T24EMD ASI schema"
+  displayName="T24EMD ASI schema"
+  namespaceURI="http://www.yourcompany.com/xmlns/prod/websphere/j2ca/t24emd/metadata"
+  xsdFileURL="file:/C:/Users/Ashok/IBM/IIBT10/TestGit/T24IIBConnector/build/classes/T24EMDASI.xsd"
+  linkage="1"
+/>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Paying_Back_Loan_via_E-Money_Account" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vmt="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:vmt1="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="Paying_Back_Loan_via_E-Money_Account_InlineSchema1.xsd"/>
+        <generatedXSD location="Paying_Back_Loan_via_E-Money_Account_InlineSchema3.xsd"/>
+        <generatedXSD location="Paying_Back_Loan_via_E-Money_Account_InlineSchema2.xsd"/>
+        <binding hasEncoding="false" imported="true" name="Paying_Back_Loan_via_E-Money_AccountSOAP" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+    
+    
+    
+          <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" schemaLocation="Paying_Back_Loan_via_E-Money_Account_InlineSchema2.xsd"/>
+<xsd:include schemaLocation="Paying_Back_Loan_via_E-Money_Account_InlineSchema1.xsd"/>
+    </xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common">
+
+<xsd:include schemaLocation="Paying_Back_Loan_via_E-Money_Account_InlineSchema3.xsd"/>
+    </xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/">
+<xsd:import namespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" schemaLocation="Paying_Back_Loan_via_E-Money_Account_InlineSchema3.xsd"/>
+<xsd:include schemaLocation="Paying_Back_Loan_via_E-Money_Account_InlineSchema2.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="PaybackLoanRequest">
+    <wsdl:part element="vmt:PaybackLoan" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="PaybackLoanResponse">
+    <wsdl:part element="vmt:PaybackLoanResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Paying_Back_Loan_via_E-Money_Account">
+    <wsdl:operation name="PaybackLoan">
+      <wsdl:input message="vmt:PaybackLoanRequest"/>
+      <wsdl:output message="vmt:PaybackLoanResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Paying_Back_Loan_via_E-Money_AccountSOAP" type="vmt:Paying_Back_Loan_via_E-Money_Account">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PaybackLoan">
+      <soap:operation soapAction="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Paying_Back_Loan_via_E-Money_Account">
+    <wsdl:port binding="vmt:Paying_Back_Loan_via_E-Money_AccountSOAP" name="Paying_Back_Loan_via_E-Money_AccountSOAP">
+      <soap:address location="http://127.0.0.1:7800/iib/cbemsl/payloanviaemoney"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

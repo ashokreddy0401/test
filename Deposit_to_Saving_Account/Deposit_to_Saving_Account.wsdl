@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Deposit_to_Saving_Account" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vmt="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:vmt1="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="Deposit_to_Saving_AccountSOAP" originalBindingStyle="document"/>
+        <generatedXSD location="Deposit_to_Saving_Account_InlineSchema2.xsd"/>
+        <generatedXSD location="Deposit_to_Saving_Account_InlineSchema1.xsd"/>
+        <generatedXSD location="Deposit_to_Saving_Account_InlineSchema3.xsd"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+  <wsdl:types>
+    
+    
+    
+    
+          <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/">
+<xsd:import namespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" schemaLocation="Deposit_to_Saving_Account_InlineSchema3.xsd"/>
+<xsd:include schemaLocation="Deposit_to_Saving_Account_InlineSchema2.xsd"/>
+</xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" schemaLocation="Deposit_to_Saving_Account_InlineSchema2.xsd"/>
+<xsd:include schemaLocation="Deposit_to_Saving_Account_InlineSchema1.xsd"/>
+</xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common">
+
+<xsd:include schemaLocation="Deposit_to_Saving_Account_InlineSchema3.xsd"/>
+</xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="VMTInitiatedSavingsDepositRequest">
+    <wsdl:part element="vmt:VMTInitiatedSavingsDeposit" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="VMTInitiatedSavingsDepositResponse">
+    <wsdl:part element="vmt:VMTInitiatedSavingsDepositResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Deposit_to_Saving_Account">
+    <wsdl:operation name="VMTInitiatedSavingsDeposit">
+      <wsdl:input message="vmt:VMTInitiatedSavingsDepositRequest"/>
+      <wsdl:output message="vmt:VMTInitiatedSavingsDepositResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Deposit_to_Saving_AccountSOAP" type="vmt:Deposit_to_Saving_Account">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="VMTInitiatedSavingsDeposit">
+      <soap:operation soapAction="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Deposit_to_Saving_Account">
+    <wsdl:port binding="vmt:Deposit_to_Saving_AccountSOAP" name="Deposit_to_Saving_AccountSOAP">
+      <soap:address location="http://127.0.0.1:7800/iib/cbemsl/deposittosavingbank"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

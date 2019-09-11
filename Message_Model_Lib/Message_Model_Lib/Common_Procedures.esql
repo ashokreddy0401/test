@@ -1,0 +1,58 @@
+
+
+
+
+BROKER SCHEMA Message_Model_Lib
+
+CREATE PROCEDURE ExtractValues ( INOUT SearchArray REFERENCE, IN FieldNames CHARACTER, OUT FieldValues CHARACTER)
+BEGIN
+	DECLARE SOURCE REFERENCE TO SearchArray.OFS_Response.record.Message_Data[1];
+	X:LOOP
+	IF CONTAINS(SOURCE,FieldNames) THEN
+		SET FieldValues = SUBSTRING(SOURCE AFTER '=');
+		LEAVE X;
+	ELSEIF LASTMOVE(SOURCE)=FALSE THEN
+		LEAVE X;
+	END IF;
+	MOVE SOURCE NEXTSIBLING;
+END LOOP;
+END;
+
+CREATE PROCEDURE ExtractENQValues ( INOUT SearchArray REFERENCE, IN FieldNames CHARACTER, OUT FieldValues CHARACTER)
+BEGIN
+	DECLARE I INTEGER 1;
+	DECLARE SOURCE REFERENCE TO SearchArray.FieldNames.FieldName[1];
+	X:LOOP
+	IF CONTAINS(SOURCE,FieldNames) THEN
+		SET FieldValues = SearchArray.FieldValues.FieldValue[I];
+		LEAVE X;
+	ELSEIF LASTMOVE(SOURCE)=FALSE THEN
+		LEAVE X;
+	END IF;
+	SET I = I + 1;
+	MOVE SOURCE NEXTSIBLING;
+END LOOP;
+END;
+
+CREATE COMPUTE MODULE Common_Procedures
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

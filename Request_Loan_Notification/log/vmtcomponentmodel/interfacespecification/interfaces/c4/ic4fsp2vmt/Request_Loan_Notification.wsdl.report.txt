@@ -1,0 +1,23 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Request_Loan_Notification\Request_Loan_Notification.wsdl
+
+The WSDL import will proceed with bindings Request_Loan_NotificationSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Request_Loan_Notification/Request_Loan_Notification.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/IC4FSP2VMT}Request_Loan_NotificationSOAP.
+Parsing wsdl binding input FSPInitiatedLoanNotification.
+Parsing wsdl binding output FSPInitiatedLoanNotification.
+Processing doc style for operation FSPInitiatedLoanNotification.
+Populating WSDL schema Request_Loan_Notification.xsd.
+Creating file Request_Loan_Notification.xsd in the workspace.
+Creating file Request_Loan_Notification_InlineSchema1.xsd in the workspace.
+Creating file /Request_Loan_Notification/Request_Loan_Notification/Request_Loan_Notification_InlineSchema2.xsd in the workspace.
+Copying source WSDL Request_Loan_Notification.wsdl to Request_Loan_Notification.wsdl.
+
+Elapsed time processing this message definition file: 0.339 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

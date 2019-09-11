@@ -1,0 +1,27 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Getting_Account_Balance\Getting_Account_Balance.wsdl
+
+
+The following is a list of WS-I warning messages found when importing:
+XSD: The location 'Getting_Account_Balance_InlineSchema2.xsd' has not been resolved because the import is unused, Line: 18, Column: 1
+XSD: The location 'Getting_Account_Balance_InlineSchema3.xsd' has not been resolved because the import is unused, Line: 26, Column: 1
+
+
+The WSDL import will proceed with bindings Getting_Account_BalanceSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Getting_Account_Balance/Getting_Account_Balance.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService}Getting_Account_BalanceSOAP.
+Parsing wsdl binding input GetAccountBalance.
+Parsing wsdl binding output GetAccountBalance.
+Processing doc style for operation GetAccountBalance.
+Populating WSDL schema Getting_Account_Balance.xsd.
+Creating file Getting_Account_Balance.xsd in the workspace.
+Copying source WSDL Getting_Account_Balance.wsdl to Getting_Account_Balance.wsdl.
+
+Elapsed time processing this message definition file: 0.192 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

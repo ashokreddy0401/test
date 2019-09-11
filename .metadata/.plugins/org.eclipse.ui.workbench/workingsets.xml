@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443813_1" label="[Activating_FSI_Product]" name="[Activating_FSI_Product]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Activating_FSI_Product" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443822_2" label="[Activating_FSI_Product_Notification]" name="[Activating_FSI_Product_Notification]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Activating_FSI_Product_Notification" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443832_3" label="[Credit_Score]" name="[Credit_Score]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Credit_Score" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443844_4" label="[Deposit_to_Saving_Account]" name="[Deposit_to_Saving_Account]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Deposit_to_Saving_Account" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443857_5" label="[Deposit_to_Saving_Account_Notification]" name="[Deposit_to_Saving_Account_Notification]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Deposit_to_Saving_Account_Notification" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443873_6" label="[Getting_Account_Balance]" name="[Getting_Account_Balance]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Getting_Account_Balance" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443892_7" label="[Getting_Account_Transaction_List]" name="[Getting_Account_Transaction_List]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Getting_Account_Transaction_List" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443914_8" label="[Getting_Loan_Credit_Limits]" name="[Getting_Loan_Credit_Limits]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Getting_Loan_Credit_Limits" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443934_9" label="[Intfc_Common_Lib]" name="[Intfc_Common_Lib]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Intfc_Common_Lib" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443956_10" label="[Loan_Mini_Statement]" name="[Loan_Mini_Statement]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Loan_Mini_Statement" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697443981_11" label="[Message_Model_Lib]" name="[Message_Model_Lib]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Message_Model_Lib" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697444003_12" label="[Paying_Back_Loan_via_E-Money_Account]" name="[Paying_Back_Loan_via_E-Money_Account]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Paying_Back_Loan_via_E-Money_Account" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697444031_13" label="[Paying_Back_Loan_via_Saving_Account]" name="[Paying_Back_Loan_via_Saving_Account]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Paying_Back_Loan_via_Saving_Account" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697444062_14" label="[Request_Loan]" name="[Request_Loan]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Request_Loan" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697444094_15" label="[Request_Loan_Notification]" name="[Request_Loan_Notification]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Request_Loan_Notification" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697444126_16" label="[T24InboundApp]" name="[T24InboundApp]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/T24InboundApp" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/T24IIBConnector" type="4"/>
+</workingSet>
+<workingSet editPageId="com.ibm.etools.mft.navigator.BrokerWorkingSet.AppLib" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697444160_17" label="[Withdraw_from_Saving_Account]" name="[Withdraw_from_Saving_Account]">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Withdraw_from_Saving_Account" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1567697415248_0" label="Window Working Set" name="Aggregate for window 1567697415248"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1568186319456_18" label="Window Working Set" name="Aggregate for window 1568186319456"/>
+</workingSetManager>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Flow>
+    <Attributes/>
+    <BaseEvent>CUSTOMER,OPEN.MSL</BaseEvent>
+    <IsComponentService>false</IsComponentService>
+    <ExitPointType>VERSION</ExitPointType>
+    <InputFields>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>customerNo</DisplayName>
+            <FieldName>CUSTOMER.NO</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>mslCustTier</DisplayName>
+            <FieldName>MSL.CUST.TIER</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>mslMsgId</DisplayName>
+            <FieldName>MSL.MSG.ID</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>mslRcptNo</DisplayName>
+            <FieldName>MSL.RCPT.NO</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>mslSimtransId</DisplayName>
+            <FieldName>MSL.SIMTRANS.ID</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>mslSubscId</DisplayName>
+            <FieldName>MSL.SUBSC.ID</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>mslTimestamp</DisplayName>
+            <FieldName>MSL.TIMESTAMP</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>mslTxnId</DisplayName>
+            <FieldName>MSL.TXN.ID</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+        <Field xsi:type="applicationVersionField" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DisplayName>sms1</DisplayName>
+            <FieldName>SMS.1</FieldName>
+            <FieldType>String</FieldType>
+            <selected>true</selected>
+        </Field>
+    </InputFields>
+    <flowName>Customer</flowName>
+</Flow>

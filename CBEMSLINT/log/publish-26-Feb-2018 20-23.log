@@ -1,0 +1,7 @@
+Publish: /home/admin/IBM/IIBT10/cbemsl-2018/CBEMSLINT
+**********************************************
+Event Name: Customer.event
+Contract Name: CUSTOMER,OPEN.MSL
+Flow Name: CBEMSLINT-Customer
+Status : Successfully Published 
+**********************************************

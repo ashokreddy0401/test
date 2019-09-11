@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Withdraw_from_Saving_Account" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vmt="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:vmt1="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="Withdraw_from_Saving_Account_InlineSchema2.xsd"/>
+        <generatedXSD location="Withdraw_from_Saving_Account_InlineSchema1.xsd"/>
+        <generatedXSD location="Withdraw_from_Saving_Account_InlineSchema3.xsd"/>
+        <binding hasEncoding="false" imported="true" name="Withdraw_from_Saving_AccountSOAP" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+    
+    
+    
+          <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/">
+<xsd:import namespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" schemaLocation="Withdraw_from_Saving_Account_InlineSchema3.xsd"/>
+<xsd:include schemaLocation="Withdraw_from_Saving_Account_InlineSchema2.xsd"/>
+    </xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" schemaLocation="Withdraw_from_Saving_Account_InlineSchema2.xsd"/>
+<xsd:include schemaLocation="Withdraw_from_Saving_Account_InlineSchema1.xsd"/>
+    </xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common">
+
+<xsd:include schemaLocation="Withdraw_from_Saving_Account_InlineSchema3.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="VMTInitiatedSavingsWithdrawalRequest">
+    <wsdl:part element="vmt:VMTInitiatedSavingsWithdrawal" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="VMTInitiatedSavingsWithdrawalResponse">
+    <wsdl:part element="vmt:VMTInitiatedSavingsWithdrawalResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Withdraw_from_Saving_Account">
+    <wsdl:operation name="VMTInitiatedSavingsWithdrawal">
+      <wsdl:input message="vmt:VMTInitiatedSavingsWithdrawalRequest"/>
+      <wsdl:output message="vmt:VMTInitiatedSavingsWithdrawalResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Withdraw_from_Saving_AccountSOAP" type="vmt:Withdraw_from_Saving_Account">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="VMTInitiatedSavingsWithdrawal">
+      <soap:operation soapAction="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Withdraw_from_Saving_Account">
+    <wsdl:port binding="vmt:Withdraw_from_Saving_AccountSOAP" name="Withdraw_from_Saving_AccountSOAP">
+      <soap:address location="http://127.0.0.1:7800/iib/cbemsl/withdrawfromsavings"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

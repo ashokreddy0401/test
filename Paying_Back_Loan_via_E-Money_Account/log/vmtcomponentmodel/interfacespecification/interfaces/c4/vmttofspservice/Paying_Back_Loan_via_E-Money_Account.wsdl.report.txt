@@ -1,0 +1,24 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Paying_Back_Loan_via_E-Money_Account\Paying_Back_Loan_via_E-Money_Account.wsdl
+
+The WSDL import will proceed with bindings Paying_Back_Loan_via_E-Money_AccountSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Paying_Back_Loan_via_E-Money_Account/Paying_Back_Loan_via_E-Money_Account.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService}Paying_Back_Loan_via_E-Money_AccountSOAP.
+Parsing wsdl binding input PaybackLoan.
+Parsing wsdl binding output PaybackLoan.
+Processing doc style for operation PaybackLoan.
+Populating WSDL schema Paying_Back_Loan_via_E-Money_Account.xsd.
+Creating file Paying_Back_Loan_via_E-Money_Account.xsd in the workspace.
+Creating file Paying_Back_Loan_via_E-Money_Account_InlineSchema1.xsd in the workspace.
+Creating file /Paying_Back_Loan_via_E-Money_Account/Paying_Back_Loan_via_E-Money_Account/Paying_Back_Loan_via_E-Money_Account_InlineSchema2.xsd in the workspace.
+Creating file /Paying_Back_Loan_via_E-Money_Account/Paying_Back_Loan_via_E-Money_Account/Paying_Back_Loan_via_E-Money_Account_InlineSchema3.xsd in the workspace.
+Copying source WSDL Paying_Back_Loan_via_E-Money_Account.wsdl to Paying_Back_Loan_via_E-Money_Account.wsdl.
+
+Elapsed time processing this message definition file: 0.505 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

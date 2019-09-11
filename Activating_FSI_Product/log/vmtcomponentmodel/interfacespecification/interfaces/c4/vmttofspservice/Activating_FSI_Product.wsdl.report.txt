@@ -1,0 +1,27 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Activating_FSI_Product\Activating_FSI_Product.wsdl
+
+
+The following is a list of WS-I warning messages found when importing:
+XSD: The location 'Activating_FSI_Product_InlineSchema2.xsd' has not been resolved because the import is unused, Line: 18, Column: 1
+XSD: The location 'Activating_FSI_Product_InlineSchema3.xsd' has not been resolved because the import is unused, Line: 22, Column: 1
+
+
+The WSDL import will proceed with bindings Activating_FSI_ProductSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Activating_FSI_Product/Activating_FSI_Product.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService}Activating_FSI_ProductSOAP.
+Parsing wsdl binding input ActivateAccount.
+Parsing wsdl binding output ActivateAccount.
+Processing doc style for operation ActivateAccount.
+Populating WSDL schema Activating_FSI_Product.xsd.
+Creating file Activating_FSI_Product.xsd in the workspace.
+Copying source WSDL Activating_FSI_Product.wsdl to Activating_FSI_Product.wsdl.
+
+Elapsed time processing this message definition file: 0.174 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

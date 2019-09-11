@@ -1,0 +1,22 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\CBEMSL01\Credit_Score\Credit_Score.wsdl
+
+The WSDL import will proceed with bindings Credit_ScoreSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/CBEMSL01/Credit_Score/Credit_Score.wsdl.
+Parsing wsdl binding {http://Credit_Score/Credit_Score/}Credit_ScoreSOAP.
+Parsing wsdl binding input CreditScore.
+Parsing wsdl binding output CreditScore.
+Processing doc style for operation CreditScore.
+Populating WSDL schema Credit_Score.xsd.
+Creating file Credit_Score.xsd in the workspace.
+Creating file Credit_Score_InlineSchema1.xsd in the workspace.
+Copying source WSDL Credit_Score.wsdl to Credit_Score.wsdl.
+
+Elapsed time processing this message definition file: 0.419 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

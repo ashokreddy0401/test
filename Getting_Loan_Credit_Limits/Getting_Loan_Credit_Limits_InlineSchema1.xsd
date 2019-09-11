@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vmt="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:vmt1="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" schemaLocation="Getting_Loan_Credit_Limits_InlineSchema2.xsd"/>
+      <xsd:element ibmSchExtn:docRoot="true" name="GetLoanCreditLimit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="c4:request"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GetLoanCreditLimitResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLoanCreditLimitResult" type="c4:GetLoanCreditLimitResult"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+    </xsd:schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/IC4FSP2VMT" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/Messages/C4/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ic4="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/IC4FSP2VMT" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/Messages/C4/" schemaLocation="Activating_FSI_Notification_InlineSchema2.xsd"/>
+      <xsd:element ibmSchExtn:docRoot="true" name="FSPInitiatedActivateNotification">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="c4:request" maxOccurs="1" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="FSPInitiatedActivateNotificationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FSPInitiatedActivateNotificationResult" type="c4:FSPInitiatedActivateNotificationResult" maxOccurs="1" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Request_Loan" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vmt="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:vmt1="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="Request_LoanSOAP" originalBindingStyle="document"/>
+        <generatedXSD location="Request_Laon_InlineSchema2.xsd"/>
+        <generatedXSD location="Request_Laon_InlineSchema3.xsd"/>
+        <generatedXSD location="Request_Laon_InlineSchema1.xsd"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+  <wsdl:types>
+    
+    
+    
+    
+          <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/">
+<xsd:import namespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" schemaLocation="Request_Laon_InlineSchema3.xsd"/>
+<xsd:include schemaLocation="Request_Laon_InlineSchema2.xsd"/>
+</xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common">
+
+<xsd:include schemaLocation="Request_Laon_InlineSchema3.xsd"/>
+</xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" schemaLocation="Request_Laon_InlineSchema2.xsd"/>
+<xsd:include schemaLocation="Request_Laon_InlineSchema1.xsd"/>
+</xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="LoanRequestRequest">
+    <wsdl:part element="vmt:LoanRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="LoanRequestResponse">
+    <wsdl:part element="vmt:LoanRequestResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Request_Loan">
+    <wsdl:operation name="LoanRequest">
+      <wsdl:input message="vmt:LoanRequestRequest"/>
+      <wsdl:output message="vmt:LoanRequestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Request_LoanSOAP" type="vmt:Request_Loan">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LoanRequest">
+      <soap:operation soapAction="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Request_Loan">
+    <wsdl:port binding="vmt:Request_LoanSOAP" name="Request_LoanSOAP">
+      <soap:address location="http://127.0.0.1:7800/iib/cbemsl/requestloan"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

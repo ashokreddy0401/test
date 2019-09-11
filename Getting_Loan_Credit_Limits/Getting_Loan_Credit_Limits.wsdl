@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Getting_Loan_Credit_Limits" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vmt="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:vmt1="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="Getting_Loan_Credit_LimitsSOAP" originalBindingStyle="document"/>
+        <generatedXSD location="Getting_Loan_Credit_Limits_InlineSchema2.xsd"/>
+        <generatedXSD location="Getting_Loan_Credit_Limits_InlineSchema3.xsd"/>
+        <generatedXSD location="Getting_Loan_Credit_Limits_InlineSchema1.xsd"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+  <wsdl:types>
+    
+    
+    
+    
+          <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/">
+<xsd:import namespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common" schemaLocation="Getting_Loan_Credit_Limits_InlineSchema3.xsd"/>
+<xsd:include schemaLocation="Getting_Loan_Credit_Limits_InlineSchema2.xsd"/>
+</xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VMT.BankingIntegration.FSIC4Simulator.Common">
+
+<xsd:include schemaLocation="Getting_Loan_Credit_Limits_InlineSchema3.xsd"/>
+</xsd:schema>
+        <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/FSPDefined/Messages/C4/" schemaLocation="Getting_Loan_Credit_Limits_InlineSchema2.xsd"/>
+<xsd:include schemaLocation="Getting_Loan_Credit_Limits_InlineSchema1.xsd"/>
+</xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="GetLoanCreditLimitRequest">
+    <wsdl:part element="vmt:GetLoanCreditLimit" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetLoanCreditLimitResponse">
+    <wsdl:part element="vmt:GetLoanCreditLimitResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Getting_Loan_Credit_Limits">
+    <wsdl:operation name="GetLoanCreditLimit">
+      <wsdl:input message="vmt:GetLoanCreditLimitRequest"/>
+      <wsdl:output message="vmt:GetLoanCreditLimitResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Getting_Loan_Credit_LimitsSOAP" type="vmt:Getting_Loan_Credit_Limits">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLoanCreditLimit">
+      <soap:operation soapAction="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Getting_Loan_Credit_Limits">
+    <wsdl:port binding="vmt:Getting_Loan_Credit_LimitsSOAP" name="Getting_Loan_Credit_LimitsSOAP">
+      <soap:address location="http://127.0.0.1:7800/iib/cbe/msl/loancreditlimits"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

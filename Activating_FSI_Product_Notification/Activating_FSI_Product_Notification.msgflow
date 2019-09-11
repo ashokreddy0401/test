@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmFileOutput.msgnode="ComIbmFileOutput.msgnode" xmlns:T24Inbound.msgnode="T24Inbound.msgnode" xmlns:T24Outbound.msgnode="T24Outbound.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="Activating_FSI_Product_Notification.msgflow" nsPrefix="Activating_FSI_Product_Notification.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="Activating_FSI_Product_Notification" bundleName="Activating_FSI_Product_Notification" pluginId="Activating_FSI_Product_Notification"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/Activating_FSI_Product_Notification/icons/full/obj16/Activating_FSI_Product_Notification.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/Activating_FSI_Product_Notification/icons/full/obj30/Activating_FSI_Product_Notification.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="83,131" outputDirectory="/home/admin/T24/R16/IIB-Inputs" outputFilename="GetCustomer-Inbound.ofs">
+        <translation xmi:type="utility:ConstantString" string="File Output"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="142,6" computeExpression="esql://routine/#Create_Account_Compute.Main">
+        <translation xmi:type="utility:ConstantString" string="xmlToOFS"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="200,142" outputDirectory="/home/admin/T24/R16/IIB-Inputs" outputFilename="CreateAccount.ofs">
+        <translation xmi:type="utility:ConstantString" string="File Output1"/>
+      </nodes>
+      <nodes xmi:type="T24Inbound.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="9,4" messageSet="T24InboundApp" adapterName="T24InboundComp" messageType="CBEMSLINT-Customer" userName="CBEMSL01" connectionType="TAFJ" remoteServerType="Websphere_AS_8.5" securityPrincipal="CBEMSL01" securityCredential="123123" ejbConnectionProperties="RemoteConnectionHosts=10.1.9.23|RemoteConnectionPorts=2812|">
+        <translation xmi:type="utility:ConstantString" string="T24Inbound"/>
+      </nodes>
+      <nodes xmi:type="T24Outbound.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="260,8" requestType="Batch OFS" connectionType="TAFJ" remoteServerType="Websphere_AS_8.5" securityPrincipal="CBEMSL01" securityCredential="123123" ejbConnectionProperties="RemoteConnectionHosts=10.1.9.23|RemoteConnectionPorts=2812|">
+        <translation xmi:type="utility:ConstantString" string="T24Outbound"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="336,139" outputDirectory="/home/admin/T24/R16/IIB-Inputs" outputFilename="Customer_Account_OFS_Response.ofs">
+        <translation xmi:type="utility:ConstantString" string="File Output2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="390,14" computeExpression="esql://routine/#Create_Account_Compute1.Main">
+        <translation xmi:type="utility:ConstantString" string="OFSToSOAP"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="445,141" outputDirectory="/home/admin/T24/R16/IIB-Inputs" outputFilename="CreateAccount-SOAP.xml">
+        <translation xmi:type="utility:ConstantString" string="File Output3"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

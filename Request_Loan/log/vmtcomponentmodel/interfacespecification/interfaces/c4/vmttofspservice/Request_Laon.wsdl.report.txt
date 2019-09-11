@@ -1,0 +1,27 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Request_Loan\Request_Laon.wsdl
+
+
+The following is a list of WS-I warning messages found when importing:
+XSD: The location 'Request_Laon_InlineSchema3.xsd' has not been resolved because the import is unused, Line: 18, Column: 1
+XSD: The location 'Request_Laon_InlineSchema2.xsd' has not been resolved because the import is unused, Line: 26, Column: 1
+
+
+The WSDL import will proceed with bindings Request_LoanSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Request_Loan/Request_Laon.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService}Request_LoanSOAP.
+Parsing wsdl binding input LoanRequest.
+Parsing wsdl binding output LoanRequest.
+Processing doc style for operation LoanRequest.
+Populating WSDL schema Request_Laon.xsd.
+Creating file Request_Laon.xsd in the workspace.
+Copying source WSDL Request_Laon.wsdl to Request_Laon.wsdl.
+
+Elapsed time processing this message definition file: 0.273 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

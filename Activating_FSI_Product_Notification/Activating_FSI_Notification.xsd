@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/IC4FSP2VMT" xmlns:c4="http://VMTComponentModel/InterfaceSpecification/Messages/C4/" xmlns:ic4="http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/IC4FSP2VMT">
+  <xsd:import namespace="http://VMTComponentModel/InterfaceSpecification/Messages/C4/" schemaLocation="Activating_FSI_Notification_InlineSchema2.xsd"/>
+  <xsd:include schemaLocation="Activating_FSI_Notification_InlineSchema1.xsd"/>
+
+<!-- BEGIN Global group petaining to all wsdl:message definitions -->
+<!-- END Global group -->
+
+
+<!-- BEGIN Message Definitions for the wsdl:operations  -->
+<!-- END Message Definitions -->
+
+
+</xsd:schema>

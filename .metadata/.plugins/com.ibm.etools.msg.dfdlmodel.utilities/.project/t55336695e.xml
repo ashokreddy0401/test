@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><MessageBroker name="T24InboundApp">
+  <XSDCollection href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd" prefix="" targetNamespace="http://www.temenos.com/T24/event/CBEMSLINT/Customer">
+    <import name="Common-EventCommon.xsd" targetNamespace="http://www.temenos.com/T24/event/Common/EventCommon"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//Customer;XSDElementDeclaration" name="Customer"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//eventCommon;XSDElementDeclaration=1" name="eventCommon" type="mlib://T24InboundApp#/-/complexType{http://www.temenos.com/T24/event/Common/EventCommon}EventCommon"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//customerNo;XSDElementDeclaration=2" name="customerNo" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//mslCustTier;XSDElementDeclaration=3" name="mslCustTier" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//mslMsgId;XSDElementDeclaration=4" name="mslMsgId" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//mslRcptNo;XSDElementDeclaration=5" name="mslRcptNo" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//mslSimtransId;XSDElementDeclaration=6" name="mslSimtransId" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//mslSubscId;XSDElementDeclaration=7" name="mslSubscId" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//mslTimestamp;XSDElementDeclaration=8" name="mslTimestamp" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//mslTxnId;XSDElementDeclaration=9" name="mslTxnId" type="mlib://T24InboundApp#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/T24InboundApp/CBEMSLINT-Customer.xsd#//sms1Group;XSDElementDeclaration=10" name="sms1Group"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/T24InboundApp/Customer.xsd" prefix="customer" targetNamespace="http://www.temenos.com/T24/event/CBEMSLINT/Customer/customer">
+    <complexType baseType="mlib://T24InboundApp#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/T24InboundApp/Customer.xsd#//Customer;XSDComplexTypeDefinition" name="Customer"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/T24InboundApp/Common-EventCommon.xsd" prefix="" targetNamespace="http://www.temenos.com/T24/event/Common/EventCommon">
+    <complexType baseType="mlib://T24InboundApp#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/T24InboundApp/Common-EventCommon.xsd#//EventCommon;XSDComplexTypeDefinition" name="EventCommon"/>
+  </XSDCollection>
+</MessageBroker>

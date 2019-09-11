@@ -1,0 +1,27 @@
+
+
+Importing file: C:\Users\USI\IBM\IIBT10\workspace\CBEMSL\Getting_Account_Transaction_List\Getting_Account_Transaction_List.wsdl
+
+
+The following is a list of WS-I warning messages found when importing:
+XSD: The location 'Getting_Account_Transaction_List_InlineSchema2.xsd' has not been resolved because the import is unused, Line: 18, Column: 1
+XSD: The location 'Getting_Account_Transaction_List_InlineSchema3.xsd' has not been resolved because the import is unused, Line: 26, Column: 1
+
+
+The WSDL import will proceed with bindings Getting_Account_Transaction_ListSOAP.
+Creating wsdl schema document for file:///C:/Users/USI/IBM/IIBT10/workspace/CBEMSL/Getting_Account_Transaction_List/Getting_Account_Transaction_List.wsdl.
+Parsing wsdl binding {http://VMTComponentModel/InterfaceSpecification/Interfaces/C4/VMTtoFSPService}Getting_Account_Transaction_ListSOAP.
+Parsing wsdl binding input GetAccountTransactionList.
+Parsing wsdl binding output GetAccountTransactionList.
+Processing doc style for operation GetAccountTransactionList.
+Populating WSDL schema Getting_Account_Transaction_List.xsd.
+Creating file Getting_Account_Transaction_List.xsd in the workspace.
+Copying source WSDL Getting_Account_Transaction_List.wsdl to Getting_Account_Transaction_List.wsdl.
+
+Elapsed time processing this message definition file: 0.218 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

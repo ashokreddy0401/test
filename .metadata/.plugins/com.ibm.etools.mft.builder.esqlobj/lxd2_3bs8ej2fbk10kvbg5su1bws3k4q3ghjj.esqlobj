@@ -1,0 +1,91 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+
+		SET OutputRoot.Properties.MessageSet = '{Message_Model_Lib}' ;
+		CREATE LASTCHILD OF OutputRoot DOMAIN 'DFDL' ;
+		-- Set The Environment Variables
+		SET Environment.MSISDN = InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:FSIIdentityId.vmt1:MSISDN ;
+		SET Environment.vmtReferenceNumber = InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:FSIIdentityId.vmt1:VmtReferenceNumber ;
+		SET Environment.MSLMessageID = InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:MessageId.vmt1:Id; 
+		SET Environment.MSLTimeStamp = InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:MessageId.vmt1:TimeStamp;
+		SET Environment.MSLReceiptNo = InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:TransactionReceiptNumber; 
+		DECLARE PhoneNumberLength INTEGER;
+		SET PhoneNumberLength = LENGTH(InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:FSIIdentityId.vmt1:MSISDN) ;
+		SET Environment.AMOUNT = InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:Amount ;
+		-- THE FT TRANSACTION
+		-- The OFS Message Header
+
+		SET OutputRoot.DFDL.Request_OFS.record.ApplicationName = 'AA.ARRANGEMENT.ACTIVITY' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Version_Name = 'NEW.MICRO' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Function = 'I' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Process_Type = 'PROCESS' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.GTS_Control_Value = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.No_Of_Authrisers = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.SignOnName = 'CBEMSL01' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.Password = '123456' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.Company_Code = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.TransactionId = '' ;
+		-- The OFS Message Body
+
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[1] = 'ARRANGEMENT:1:1=NEW';
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[2] = 'CUSTOMER:1:1='||SUBSTRING(InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:FSIIdentityId.vmt1:VmtReferenceNumber FROM PhoneNumberLength-8);
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[3] = 'PROPERTY:1:1=COMMITMENT';
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[4] = 'FIELD.NAME:1:1=AMOUNT';
+	    SET OutputRoot.DFDL.Request_OFS.record.MessageData[5] = 'FIELD.VALUE:1:1='||InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:Amount ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[6] = 'FIELD.NAME:1:2=TERM';
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[7] = 'FIELD.VALUE:1:2=1M' ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[8] = 'INITIATION.TYPE:1:1=USER';
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[9] = 'PROPERTY:2:1=SETTLEMENT';
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[10] = 'FIELD.NAME:2:1=PAYOUT.SETTLEMENT';
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[11] = 'FIELD.VALUE:2:1=YES';
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[12] = 'FIELD.NAME:2:2=PAYOUT.ACCOUNT';
+--		SET OutputRoot.DFDL.Request_OFS.record.MessageData[13] = 'FIELD.VALUE:2:2='||InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:FSIIdentityId.vmt1:MSISDN ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[13] = 'MSL.RCPT.NO:1:1='||InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:TransactionReceiptNumber ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[14] = 'MSL.MSG.ID:1:1='||InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:MessageId.vmt1:Id ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[15] = 'MSL.TIMESTAMP:1:1='||CAST(InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:MessageId.vmt1:TimeStamp AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss') ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[16] = 'MSL.TXN.ID:1:1='||InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:TransactionId ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[17] = 'MSL.SIMTRANS.ID:1:1='||InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:SimAppTransId ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[18] = ' ';
+		-- THE ENQUIRY
+		-- ENQUIRY HEADER
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ApplicationName = 'ENQUIRY.SELECT' ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ENQ_UserInformation.SignOnName = 'CBEMSL01' ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ENQ_UserInformation.Password = '123456' ;
+
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.TransactionId = 'ACCT.BAL.MSL' ;
+		-- The OFS Message Body
+
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.MessageData[1] = 'ACCOUNT.NUMBER:EQ='||InputRoot.SOAP.Body.vmt:LoanRequest.vmt:request.c4:FSIIdentityId.vmt1:MSISDN ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.MessageData[2] = ' ';
+		-- NEW CODE
+
+		CREATE LASTCHILD OF Environment.Variables.Transaction DOMAIN 'DFDL';
+		CREATE LASTCHILD OF Environment.Variables.Enquiry DOMAIN 'DFDL';
+		SET Environment.Variables.Transaction.DFDL.Request_OFS = OutputRoot.DFDL.Request_OFS ;
+		SET Environment.Variables.Enquiry.DFDL.Request_OFS_ENQ = OutputRoot.DFDL.Request_OFS_ENQ ;
+		DECLARE options INTEGER BITOR(RootBitStream, ValidateNone, ValidateNone);
+		SET Environment.Data.Transaction = CAST(ASBITSTREAM(Environment.Variables.Transaction.DFDL.Request_OFS,547,1208,'{Message_Model_Lib}','{}:Request_OFS',,options) AS CHARACTER CCSID 1208) ;
+		SET Environment.Data.Enquiry = CAST(ASBITSTREAM(Environment.Variables.Enquiry.DFDL.Request_OFS_ENQ,547,1208,'{Message_Model_Lib}','{}:Request_OFS_ENQ',,options) AS CHARACTER CCSID 1208) ;
+
+		CREATE LASTCHILD OF OutputRoot DOMAIN 'XMLNSC';
+		SET OutputRoot.XMLNSC.requests.request[1] = Environment.Data.Transaction ;
+		-- SET OutputRoot.XMLNSC.requests.request[2] = Environment.Data.Enquiry ;
+
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;

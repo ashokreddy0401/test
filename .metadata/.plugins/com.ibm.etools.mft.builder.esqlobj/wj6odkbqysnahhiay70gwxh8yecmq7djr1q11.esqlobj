@@ -1,0 +1,77 @@
+CREATE COMPUTE MODULE Create_Account_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		
+		SET OutputRoot.Properties.MessageSet = '{Message_Model_Lib}' ;
+		CREATE LASTCHILD OF OutputRoot DOMAIN 'DFDL' ;
+		
+		-- The OFS Message Header
+		
+		SET OutputRoot.DFDL.Request_OFS.record.ApplicationName = 'ACCOUNT' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Version_Name = 'OPEN.MSL' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Function = 'I' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.Process_Type = 'PROCESS' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.GTS_Control_Value = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.Options.No_Of_Authrisers = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.SignOnName = 'CBEMSL02' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.Password = '123123' ;
+		SET OutputRoot.DFDL.Request_OFS.record.UserInformation.Company_Code = '' ;
+		SET OutputRoot.DFDL.Request_OFS.record.TransactionId = '' ;
+		
+		-- The OFS Message Body
+		
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[1] = 'CUSTOMER:1:1='||InputBody.ns:Customer.ns:customerNo;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[2] = 'MSL.MSG.ID:1:1='||InputBody.ns:Customer.ns:mslMsgId ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[3] = 'MSL.RCPT.NO:1:1='||InputBody.ns:Customer.ns:mslRcptNo ;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[4] = 'MSL.SIMTRANS.ID:1:1='||InputBody.ns:Customer.ns:mslSimtransId;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[5] = 'MSL.TXN.ID:1:1='||InputBody.ns:Customer.ns:mslTxnId;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[6] = 'MSL.TIMESTAMP:1:1='||InputBody.ns:Customer.ns:mslTimestamp;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[7] = 'MSL.SUBSC.ID:1:1='||InputBody.ns:Customer.ns:mslSubscId;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[8] = 'ALT.ACCT.ID:1:1='||InputBody.ns:Customer.ns:mslSubscId;
+		SET OutputRoot.DFDL.Request_OFS.record.MessageData[9] = ' ';
+		
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ApplicationName = 'ENQUIRY.SELECT' ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ENQ_UserInformation.SignOnName = 'CBEMSL01' ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.ENQ_UserInformation.Password = '123456' ;
+		
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.TransactionId = 'FIND.CUSTOMER.MSL' ;
+		
+		-- The OFS Message Body
+		
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.MessageData[1] = '@ID:EQ='||InputBody.ns:Customer.ns:customerNo ;
+		SET OutputRoot.DFDL.Request_OFS_ENQ.record.MessageData[2] = ' ';
+		
+		
+		-- COMBINE THE TWO REQUESTS
+		
+		CREATE LASTCHILD OF Environment.Variables.Transaction DOMAIN 'DFDL';
+		CREATE LASTCHILD OF Environment.Variables.Enquiry DOMAIN 'DFDL';
+		SET Environment.Variables.Transaction.DFDL.Request_OFS = OutputRoot.DFDL.Request_OFS ;
+		SET Environment.Variables.Enquiry.DFDL.Request_OFS_ENQ = OutputRoot.DFDL.Request_OFS_ENQ ;
+		DECLARE options INTEGER BITOR(RootBitStream, ValidateNone, ValidateNone);
+		SET Environment.Data.Transaction = CAST(ASBITSTREAM(Environment.Variables.Transaction.DFDL.Request_OFS,547,1208,'{Message_Model_Lib}','{}:Request_OFS',,options) AS CHARACTER CCSID 1208) ;
+		SET Environment.Data.Enquiry = CAST(ASBITSTREAM(Environment.Variables.Enquiry.DFDL.Request_OFS_ENQ,547,1208,'{Message_Model_Lib}','{}:Request_OFS_ENQ',,options) AS CHARACTER CCSID 1208) ;
+		
+		CREATE LASTCHILD OF OutputRoot DOMAIN 'XMLNSC';
+  		SET OutputRoot.XMLNSC.requests.request[1]  = Environment.Data.Transaction ;
+  		SET OutputRoot.XMLNSC.requests.request[2]  = Environment.Data.Enquiry ;
+  		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
